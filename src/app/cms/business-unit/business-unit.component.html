@@ -1,0 +1,99 @@
+
+
+<div class="container-fluid" style="padding-top: 20px">
+  <div class="row">
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Podaci o jedinici</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+      <form [formGroup]="buForm" (ngSubmit)="onSubmit(buForm)">
+
+        <div class="form-group">
+          <label for="bu_name">Naziv jedinice</label>
+          <input type="text" class="form-control" formControlName="bu_name" id="bu_name" placeholder="Unesi naziv jedinice">
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+          <label for="bu_city">Grad</label>
+          <input type="text" class="form-control" formControlName="bu_city" id="bu_city" placeholder="Unesi ime grada">
+        </div>
+        <div class="form-group">
+          <label for="bu_street">Ulica</label>
+          <input type="text" class="form-control" formControlName="bu_street" id="bu_street" placeholder="Unesi ime ulice">
+        </div>
+        <div class="form-group">
+          <label for="bu_str_num">Kućni broj</label>
+          <input type="text" class="form-control" formControlName="bu_str_num" id="bu_str_num" placeholder="Unesi kućni broj">
+        </div>
+        <hr>
+        <h5 class="card-title">Podaci o odgovornoj osobi</h5>
+        <div class="form-group">
+          <label for="bu_boss_frist_name">Ime odgovorne osobe</label>
+          <input type="text" class="form-control" formControlName="bu_boss_frist_name" id="bu_boss_frist_name" placeholder="Upiši ime odgovorne osobe">
+        </div>
+        <div class="form-group">
+          <label for="bu_boss_last_name">Prezime odgovorne osobe</label>
+          <input type="text" class="form-control" formControlName="bu_boss_last_name" id="bu_boss_last_name" placeholder="Upiši prezime odgovorne osobe">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Popis jedinica</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+
+      <ul class="list-group">
+        <!-- <li class="list-group-item active" *ngFor="let buUnit of buArray">{{ buUnit.bu_name }}</li> -->
+        <a  class="list-group-item list-group-item-action" *ngFor="let buUnit of buArray" (click)="onClickBU( buUnit.id )" [class.active]="buUnit.id == showBUArray.id">{{ buUnit.bu_name }}</a>
+
+      </ul>
+
+    </div>
+  </div>
+
+
+    </div>
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Detalji i uređivanje</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+
+        <p>Naziv jedinice: <b>{{ showBUArray.bu_name }}</b></p>
+        <p>Ulica: <b> {{ showBUArray.bu_street }}</b></p>
+        <p>Kućni broj: <b>{{ showBUArray.bu_str_num }}</b></p>
+        <p>Grad: <b>{{ showBUArray.bu_city }}</b></p>
+        <hr>
+        <p>Odgovorna osoba: <b>{{ showBUArray.bu_boss_frist_name }} {{ showBUArray.bu_boss_last_name }} </b></p>
+        <button type="submit" class="btn btn-info mb-2">Izmjeni</button>
+        <button type="submit" class="btn btn-danger mb-2">Obriši</button>
+
+   
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>

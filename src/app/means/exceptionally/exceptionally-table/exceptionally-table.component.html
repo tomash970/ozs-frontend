@@ -1,0 +1,34 @@
+<div class="card ">
+    <div class="card-header">Podaci za ispis</div>
+    <div class="card-body">
+      <div class="table-responsive-sm">
+        <table  class="table table-bordered table-striped">
+          <thead class="thead-light">
+
+      <tr>
+        <th>Redni broj</th>
+        <th>Šifra OZS-a</th> 
+        <th>Naziv OZS-a</th>
+        <th>Veličinski broj</th>
+        <th>kom/par</th> 
+
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of exceptionallyModel; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.mean_name.id }}</td> 
+        <td>{{ item.mean_name.so }}</td>
+        <td>{{ item.mean_size | uppercase }}</td>
+        <td>{{ item.quantity }}</td> 
+        <td>
+          <button type="button" class="btn btn-sm btn-primary" (click)="onEditExceptionally(i)"><i class="fas fa-edit"></i></button>
+          <button type="button" class="btn btn-sm btn-danger" (click)="onDeleteExceptionally(i)"><i class="fas fa-trash-alt"></i></button>
+        </td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

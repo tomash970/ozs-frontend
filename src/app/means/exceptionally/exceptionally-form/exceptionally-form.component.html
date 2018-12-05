@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header"><h2>Iznimno izdavanje:</h2></div>
+    <br>
+    <div class="card-body">
+
+<form [formGroup]="exceptionallyForm" (ngSubmit)="onSubmit()"  class="form-horizontal">
+ 
+    <div class="form-row">
+
+
+      <div class="col-md-4 mb-3">
+        
+          <label for="mean_name">Naziv OZS-a</label>
+          <select  id="mean_name" formControlName="mean_name" class="form-control" required>
+            <!-- <option disabled value="">Klikni za odabir</option> -->
+            <option [ngValue]="suit" *ngFor="let suit of suitArray" >{{ suit.so }}</option>
+          </select>
+        
+      </div>
+    
+      <div class="col-md-4 mb-3">
+        
+         <label for="mean_size" >Veličinski broj</label>
+         <input  id="mean_size" formControlName="mean_size" type="text" class="form-control" style="text-transform:uppercase">
+        
+      </div>
+    
+      <div class="col-md-4 mb-3">
+        
+         <label for="quantity" >Broj komada ili parova</label>
+         <input  id="quantity" formControlName="quantity" type="number" class="form-control" >
+        
+      </div>
+   
+    </div>
+      
+            <button id="shake" class="btn btn-primary btn-block" type="submit" [disabled]="!exceptionallyForm.valid" >{{ editMode ? 'Uredi zapis' : 'Pohrani zapis' }}</button>
+            <!-- <button  class="btn btn-primary btn-block" type="submit" [disabled]="!exceptionallyForm.valid">Dodaj</button> -->
+        <!-- <br>
+            <button  class="btn btn-info btn-block" type="submit" (click)="endOfEntry()" *ngIf="notEmptyIzvanredno ||
+            notEmptyIznimno" >Završi unos</button> -->
+      
+    
+  
+</form>   
+</div>
+</div>

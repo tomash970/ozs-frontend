@@ -6,9 +6,51 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+ 
+
+  <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/darkly/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
+  <script>
+    // $(document).ready(function() {
+    //   $.getJSON("https://bootswatch.com/api/4.json", function (data) {
+    //     var themes = data.themes;
+    //     var select = $("#theme-changer");
+    //     select.show();
+    //     $(".alert").toggleClass("alert-info alert-success");
+    //     $(".alert h4").text("Success!");
+        
+    //     themes.forEach(function(value, index){
+    //       select.append($("<option />")
+    //             .val(index)
+    //             .text(value.name));
+    //     });
+        
+    //     select.change(function(){
+    //       var theme = themes[$(this).val()];
+    //       $("link").attr("href", theme.css);
+    //     }).change();
+    //     }, "json").fail(function(){
+    //         $(".alert").toggleClass("alert-info alert-danger");
+    //         $(".alert h4").text("Greška! Za pravilan rad aplikacije potrebna je stabilna internetska veza!");
+    //     });
+
+    //   });
+  </script>
 </head>
-<body>
+<body style="padding-top: 80px">
   <app-root></app-root>
+  <footer class="footer">
+    <div class="container" style="padding: 50px">
+        &#169 <a class="text-center font-weight-bold">Tomislav Piljek</a>
+    </div>
+  </footer>
 </body>
 </html>

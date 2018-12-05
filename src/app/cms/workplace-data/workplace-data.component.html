@@ -1,0 +1,95 @@
+<!-- <div class="card" >
+  <h5 class="card-header">Upis podataka o radniku</h5>
+  <div class="card-body"> -->
+    <!-- <form [formGroup]="workerForm" (ngSubmit)="onSubmit()"> -->
+    <!-- <form class="form-inline">
+      <div class="form-row">
+        <div class=" col-md-4 mb-3">  
+          <label for="worker_name">Naziv organizacijske jedinice</label> -->
+          <!-- <input  id="worker_name" formControlName="worker_name" type="text" class="form-control">    -->
+          <!-- <input  id="worker_name"  type="text" class="form-control">   
+        </div>
+      </div> -->
+      <!-- <button id="shake" class="btn btn-primary btn-block" [disabled]="!workerForm.valid" type="submit"  >{{ editMode ? 'Uredi zapis' : 'Pohrani zapis' }}</button> -->
+      <!-- <button  class="btn btn-primary"  type="submit"  >Pohrani</button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container-fluid" style="padding-top: 20px">
+  <div class="row">
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Podaci o radnom mjestu</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+      <form>
+        
+        
+        <div class="form-group">
+          <label for="exampleInputPassword1">Naziv radnog mjesta</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Unesi naziv radnog mjesta">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Šifra radnog mjesta</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Unesi šifru">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> 
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Popis radnih mjesta</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+      
+      <ul class="list-group">
+        <!-- <li class="list-group-item active">Kuhar</li> -->
+        <!-- <li class="list-group-item" *ngFor="let workPlace of workPlaceArray">{{ workPlace.wp_name }}</li> -->
+        <a  class="list-group-item list-group-item-action" *ngFor="let workPlace of workPlaceArray" (click)="onClickWorkPlace( workPlace.id )" [class.active]="workPlace.id == showWorkPlaceArray.id">{{ workPlace.wp_name }}</a>
+
+
+      </ul>
+
+    </div>
+  </div>
+
+
+    </div>
+    <div class="col">
+
+
+        <div class="card" >
+            <div class="card-body">
+              <h5 class="card-title">Detalji i uređivanje</h5>
+              <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+
+        
+        <p>Naziv radnog mjesta: <b> {{ showWorkPlaceArray.wp_name }}</b></p>
+        <p>Šifra radnog mjesta: <b>{{ showWorkPlaceArray.wp_code }}</b></p>
+        <button type="submit" class="btn btn-info mb-2">Izmjeni</button>
+        <button type="submit" class="btn btn-danger mb-2">Obriši</button>
+
+
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>

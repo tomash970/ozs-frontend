@@ -1,0 +1,48 @@
+<div class="card" >
+  <h5 class="card-header">Upis podataka o radniku</h5>
+  <div class="card-body">
+    <form [formGroup]="workerForm" (ngSubmit)="onSubmit()" >
+      <div class="form-row">
+        <div class="col-md-4 mb-3">  
+          <label for="worker_name">Ime radnika</label>
+          <input  id="worker_name" formControlName="worker_name" type="text" class="form-control">   
+        </div>
+        <div class="col-md-4 mb-3" > 
+          <label for="business_unit" >Naziv organizacijske jedinice</label>
+          <select   id="business_unit" formControlName="business_unit" class="form-control" (change) = "onChangeUnit()">
+              <option disabled [ngValue]=null >Odaberi</option>
+            <option [ngValue]="rj" *ngFor="let rj of businessUnitArray">{{rj.bu_name}}</option>
+          </select>
+        </div>
+        <!-- <div class="col-md-4 mb-3" > 
+          <label for="business_unit" >Naziv organizacijske jedinice</label>
+          <select   id="business_unit" formControlName="business_unit" class="form-control" >
+            <option [ngValue]="rj" *ngFor="let rj of businessUnitArray">{{rj.name}}</option>
+          </select>
+        </div> -->
+        <div class="col-md-4 mb-3">  
+            <label for="boss_name" >Ime nadređenog:</label>
+            <input id="boss_name" formControlName="boss_name" type="text" class="form-control" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="worker_second_name" >Prezime radnika</label>
+          <input id="worker_second_name" formControlName="worker_second_name" type="text" class="form-control"  title="Klikni za unos">
+        </div>       
+        <div class="col-md-4 mb-3">
+          <label for="work_place" >Radno mjesto radnika</label>
+          <select  id="work_place" formControlName="work_place" class="form-control" >
+              <option disabled [ngValue]=null >Odaberi</option>
+            <option [ngValue]="rm" *ngFor="let rm of workPlaceArray">{{ rm.wp_name }}</option>
+          </select>  
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="boss_second_name" >Prezime nadređenog:</label>
+          <input id="boss_second_name" formControlName="boss_second_name" type="text" class="form-control" >
+        </div>
+      </div>
+      <button id="shake" class="btn btn-primary btn-block" [disabled]="!workerForm.valid" type="submit"  >{{ editMode ? 'Uredi zapis' : 'Pohrani zapis' }}</button>
+    </form>
+  </div>
+</div>

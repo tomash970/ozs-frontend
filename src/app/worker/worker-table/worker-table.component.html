@@ -1,0 +1,29 @@
+<div class="card" *ngIf="workerModelStatus">
+  <div class="card-header">Podaci za ispis</div>
+  <div class="card-body">
+    <div class="table-responsive-sm">
+      <table  class="table table-bordered table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th>Ime i prezime radnika</th>
+            <th>Radno mjesto</th>
+            <th>Organizacijska jedinica</th>
+            <th>Ime i prezime nadređenog radnika</th>
+            <th>Akcija</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let worker of workerModel; let i = index">
+            <td>{{worker.worker_name}} {{worker.worker_second_name}}</td>
+            <td>{{worker.work_place.wp_name}}</td>
+            <td>{{worker.business_unit.bu_name}}</td>
+            <td>{{worker.boss_name}} {{worker.boss_second_name}}</td>
+            <td>
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditWorker(i)"><i class="fas fa-edit"></i></button>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

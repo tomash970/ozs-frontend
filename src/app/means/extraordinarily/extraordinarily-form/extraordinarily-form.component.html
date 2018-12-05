@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header"><h2>Izvanredno izdavanje:</h2></div>
+  <br>
+  <div class="card-body">
+    <form [formGroup]="extraordinarilyForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+      <div class="form-row">
+        <div class=" col-md-4 mb-3">          
+          <label for="mean_name">Naziv OZS-a  </label>
+          <select  id="mean_name" formControlName="mean_name" class="form-control" required>
+            <option disabled value="">Klikni za odabir</option>
+            <option [ngValue]="suit" *ngFor="let suit of suitArray" ><span hidden></span>{{ suit.so }}</option>
+          </select>  
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="mean_size" >Veličinski broj  </label>
+          <input id="mean_size" formControlName="mean_size" type="text" class="form-control" style="text-transform:uppercase">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="quantity" >Broj komada ili parova  </label>
+          <input id="quantity" formControlName="quantity" type="number" class="form-control" >
+        </div>
+      </div>   
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="responsibility" >Odgovornost za štetu  </label>
+            <select id="responsibility" formControlName="responsibility" class="form-control" #localVariable >
+              <option disabled value=""></option>
+              <option value="Snosi_potpunu">Snosi - potpunu</option>
+              <option value="Snosi_djelomicnu">Snosi - djelomičnu</option>
+              <option value="Ne_snosi">Ne snosi</option>
+            </select>
+        </div>   
+      <!-- datepicker -->
+        <div class="col-md-4 mb-3">
+          <label for="mydaterange">Korišteno u periodu</label>
+          <my-date-range-picker  id="mydaterange" formControlName="mydaterange" [options]="myDateRangePickerOptions">
+          </my-date-range-picker>
+        </div>
+      </div>   
+      <button id="shake" class="btn btn-primary btn-block" type="submit" [disabled]="!extraordinarilyForm.valid" >{{ editMode ? 'Uredi zapis' : 'Pohrani zapis' }}</button>   
+    </form>   
+  </div> 
+</div>

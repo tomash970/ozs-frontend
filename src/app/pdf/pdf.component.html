@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="card">
+        <div class="card-header">
+          <h2 class="float-left">Podaci za ispis </h2>
+          <a (click)="downloadPdf()" class="btn btn-primary float-right">Pohrani i ispiši</a>
+          <a  href= "#" class="btn btn-danger float-right">Obriši</a>
+        </div>
+        <div class="card-body" id="pdfContent" >
+          <h5 class="card-title">Vaša tvrtka d.o.o.</h5>
+          <h5 class="card-title">{{ businessUnitName }}</h5>
+          <br>
+          <p class="card-title text-center font-weight-bold">Zapisnik broj: 1</p>
+          <p class="card-text text-center font-weight-bold">za iznimno - izvanredno zaštitne odjeće i obuće te zaštitnih sredstava</p>
+          <br>
+          <p class="card-text">Zahtjevnica je upućena Poslovima nabave.</p>
+          <h6 class="card-title">1. Iznimno izdavanje</h6>
+          <p class="card-text text-justify">Molimo da Poslovi nabave radniku <span class="font-weight-bold">{{ workerName }} {{ workerSecondName }}</span> koji je raspoređen na poslove <span class="font-weight-bold">{{ workPlaceId }} {{ workPlaceName }}</span> izda slijedeća službena i zaštitna odjeća odnosno zaštitna sredstva.</p>
+          <div class="table-responsive-sm">
+            <table  class="table table-bordered ">
+              <thead class="thead-light">
+                <tr>
+                  <th>Redni broj</th>
+                  <th>Šifra OZS-a</th> 
+                  <th>Naziv OZS-a</th>
+                  <th>Veličinski broj</th>
+                  <th>Kom/Par</th> 
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of exceptionallyModel; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ item.mean_name.id }}</td> 
+                      <td>{{ item.mean_name.so }}</td>
+                      <td>{{ item.mean_size | uppercase }}</td>
+                      <td>{{ item.quantity }}</td> 
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="card-title">2. Ivanredno izdavanje</h6>
+          <p class="card-text text-justify">Molimo da Poslovi nabave radniku <span class="font-weight-bold">{{ workerName }} {{ workerSecondName }}</span> koji je raspoređen na poslove <span class="font-weight-bold">{{ workPlaceId }} {{ workPlaceName }}</span> zamijeni slijedeća službena i zaštitna odjeća odnosno zaštitna sredstva zbog prijevremene dotrajalost ili oštećenja.</p>
+          <div class="table-responsive-sm">
+            <table  class="table table-bordered ">
+              <thead class="thead-light">
+                <tr>
+                  <th>Redni broj</th>
+                  <th>Šifra OZS-a</th> 
+                  <th>Naziv OZS-a</th>
+                  <th>Veličinski broj</th>
+                  <th>Kom/Par</th> 
+                  <th>Period korištenja</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of extraordinarilyModel; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ item.mean_name.id }}</td> 
+                      <td>{{ item.mean_name.so }}</td>
+                      <td>{{ item.mean_size | uppercase }}</td>
+                      <td>{{ item.quantity }}</td> 
+                      <td>{{ item.mydaterange.beginDate.day }}.{{ item.mydaterange.beginDate.month }}.{{ item.mydaterange.beginDate.year }} - {{ item.mydaterange.endDate.day }}.{{ item.mydaterange.endDate.month }}.{{ item.mydaterange.endDate.year }}</td> 
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="card-title">3. Naknada štete</h6>
+          <div *ngFor="let item of extraordinarilyModel">
+            <div [ngSwitch]="item.responsibility">
+              <p class="card-text text-justify" *ngSwitchCase="'Snosi_potpunu'">Obzirom da je radnik odgovoran za oštećenje sredstva: <span class="font-weight-bold">{{ item.mean_name.id }} {{ item.mean_name.so }}</span> potrebno je provesti postupak naknade štete.</p>
+              <p class="card-text text-justify" *ngSwitchCase="'Snosi_djelomicnu'">Obzirom da je radnik djelomično odgovoran za oštećenje sredstva: <span class="font-weight-bold">{{ item.mean_name.id }} {{ item.mean_name.so }}</span> potrebno je provesti postupak naknade štete.</p>
+              <p class="card-text text-justify" *ngSwitchDefault>Obzirom da je radnik nije odgovoran za oštećenje sredstva: <span class="font-weight-bold">{{ item.mean_name.id }} {{ item.mean_name.so }}</span> nije potrebno provesti postupak naknade štete.</p>         
+            </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-md-6 mb-3">
+                <p class="card-text text-justify">Potpis neposrednog ovlaštenika:</p>
+                <p class="card-text text-justify">{{ bossName }} {{ bossSecondName }}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p class="card-text text-justify">Potpis radnika:</p>
+                <p class="card-text text-justify">{{ workerName }} {{ workerSecondName }}</p>
+              </div>
+          </div>
+          <br>
+          <p class="card-text text-justify">U Zagrebu, {{ today | date: 'dd.MM.yyyy.' }}</p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
